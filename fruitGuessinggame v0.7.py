@@ -7,7 +7,7 @@ import sqlite3
 import random
 
 def randomFruit(): #This function is connected to a database in order to randomly select a fruit from a database which contains a list of fruit.
-    with sqlite3.connect("FruitDatabase/fruits.db") as db: #Here is the code that connects my database to randomFruit function.
+    with sqlite3.connect("FruitDatabase/fruits.db") as db: #Here is the code that connects my database to randomFruit function.sd
         cursor = db.cursor()
         cursor.execute("select FruitName from fruits")
         fruitList = cursor.fetchall()
