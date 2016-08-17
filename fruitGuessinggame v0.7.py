@@ -7,7 +7,7 @@ import sqlite3
 import random
 
 def randomFruit(): #This function is connected to a database in order to randomly select a fruit from a database which contains a list of fruit.
-    with sqlite3.connect("FruitDatabase/fruits.db") as db: #Here is the code that connects my database to randomFruit function.sd
+    with sqlite3.connect("FruitDatabase(GitHub)/fruits.db") as db: #Here is the code that connects my database to randomFruit function.
         cursor = db.cursor()
         cursor.execute("select FruitName from fruits")
         fruitList = cursor.fetchall()
@@ -33,7 +33,7 @@ def fruitGuessinggame(): #This function requests for the players name.
     print("Welcome to fruit guessing game.") #Welcomes the user to fruit guessing game.
     print("")
     print("How To Play: Unscramble the letters to make a word.") #Instructions of how to play fruit guessing game.
-    #time.sleep(1.3) #Shorten time.sleep to 1.3 second.
+    time.sleep(1.3) #Shorten time.sleep to 1.3 second.
     userName = input("Enter player name: ") #Requests for a name.
     while True:
         if any(char.isdigit() for char in userName) == True:
