@@ -10,7 +10,7 @@ who you are doing it for (the target audience): Myself and the marker
 
 how the solution will be used (context): It will be used for myself to test and debug so i am able to get a completed programme before the deadline and submit it in.
 Requirements for the game:
-Request for the Player’s name.
+Request for the Playerâ€™s name.
 The programme will need to display the fruit jumbled up and Player must guess the fruit.
 What can the player do after finishing the game. 
 Specifications/Resources:
@@ -18,7 +18,7 @@ Wing IDE 3.3.2
 I would need functions which enables my programme to send data to other functions
 Naming conventions for functions and variables
 
-Target Audience:
+Target Audience: Hello
 
 
 Stakeholders:
