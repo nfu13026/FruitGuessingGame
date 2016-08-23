@@ -21,13 +21,13 @@ def randomFruit(): #This function is connected to a database in order to randoml
                                    "1. Play Again\n"
                                    "2. Quit\n")
                 while userOption != '1' and userOption != '2':
-                    print ('Invalid entry\n')
+                    print ("Invalid entry\n")
                     userOption = input("Please select an option:\n"
                                    "1. Play Again\n"
                                    "2. Quit\n")
                 if userOption == '1':
                     result = True
-        print ('Good-Bye')
+        print ("Good-Bye")
     
 def jumbleFruit(selectFruit): #This function jumbles a string and displays it for the player to guess the jumbled word.
     jumbledFruit = str(''.join(selectFruit)) #Change selectFruit variable into string type.
@@ -58,9 +58,7 @@ def fruitGuessinggame(): #This function requests for the players name.
     print("How To Play: Unscramble the letters to make a word.")
     print("NOTE: You have 4 guesses. If you get the first guess wrong a guess is taken off you.\n"
         "For every jumbled fruit you will start with 4 guesses.\n"
-        "If you guess right, you move onto the jumbled fruit.\n") #Instructions of how to play fruit guessing game.
-    time.sleep(1.3) #Shorten time.sleep to 1.3 second
-    
+        "If you guess right, you move onto the next jumbled fruit.\n") #Instructions of how to play fruit guessing game.
     userName = input("Enter player name: ") #Requests for a name.
     while True:
         if any(char.isdigit() for char in userName) == True:

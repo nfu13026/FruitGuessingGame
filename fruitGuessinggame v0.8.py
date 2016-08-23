@@ -47,7 +47,7 @@ def fruitGuessinggame(): #This function requests for the players name.
     print("How To Play: Unscramble the letters to make a word.")
     print("NOTE: You have 4 guesses. If you get the first guess wrong a guess is taken off you."
         "For every jumbled fruit you will start with 4 guesses."
-        "If you guess right, you move onto the jumbled fruit.") #Instructions of how to play fruit guessing game.
+        "If you guess right, you move onto the next jumbled fruit.") #Instructions of how to play fruit guessing game.
     time.sleep(1.3) #Shorten time.sleep to 1.3 second.
     userName = input("Enter player name: ") #Requests for a name.
     while True:
