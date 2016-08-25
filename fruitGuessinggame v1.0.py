@@ -38,8 +38,11 @@ def jumbleFruit(selectFruit): #This function jumbles a string, displays it for t
     userGuess = input("Enter your guess: ") #The player is asked to enter a guess.
     counter = 4 #Set counter to 4. This variable shows many guesses the player has left.
     while counter > 0:
-        counter = counter -1 #Take away one guess for each guess is incorrect.     
-        if counter == 0:#If counter is equal to one. Make them enter a final guess.
+        counter = counter -1 #Take away one guess for each guess is incorrect.   
+        if userGuess == str(''.join(selectFruit)): #If userGuess is the same as selectFruit, print "Good Job."
+            print("Good Job. Here comes the next fruit.")
+            return True #Return True if the player passess the condition by guessing the jumbledFruit right then go to the while loop in def randomFruit to select a random fruit.        
+        elif counter == 0:#If counter is equal to one. Make them enter a final guess.
             userGuess = input("You are out of guesses. Make a final guess: ")#Enter final guess.
             if userGuess == str(''.join(selectFruit)):#If their final guess is correct, print good job and go to the next jumbled fruit.
                 print("Good job. Here comes the next fruit.")
@@ -47,11 +50,10 @@ def jumbleFruit(selectFruit): #This function jumbles a string, displays it for t
             else:#Otherwise if their guess is incorrect, display Bad Luck.
                 print("Bad luck")
                 return False#If they meet the conditions of the else statement, return False to the while loop in def randomFruit and give them options to select.        
-        elif userGuess == str(''.join(selectFruit)): #If userGuess is the same as selectFruit, print "Good Job."
-            print("Good Job. Here comes the next fruit.")
-            return True #Return True if the player passess the condition by guessing the jumbledFruit right then go to the while loop in def randomFruit to select a random fruit.
         elif userGuess != str(''.join(selectFruit)): #Else/if userGuess is not the same as selectFruit, let the player try again.
+            print(counter)
             userGuess = input("You have {0} more guesses left. Please guess again: ".format(counter)) #Display the number of guesses if the player guess is incorrect.
+            
         
 
 def fruitGuessinggame(): #This function requests for the players name.
