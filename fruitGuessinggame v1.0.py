@@ -2,10 +2,12 @@
 #Nathaniel Fu
 #Version 0.9
 
-import time
 import sqlite3
 import random
 
+""" 
+#This function is connected to a database in order to randomly select a fruit from a database which contains a list of fruit.
+"""
 def randomFruit(): #This function is connected to a database in order to randomly select a fruit from a database which contains a list of fruit.
     with sqlite3.connect("FruitDatabase(GitHub)/fruits.db") as db: #Here is the code that connects my database to randomFruit function.
         cursor = db.cursor()
@@ -17,19 +19,22 @@ def randomFruit(): #This function is connected to a database in order to randoml
             result = jumbleFruit(selectFruit) #Send selectFruit to jumbleFruit function.
             selectFruit = random.choice(fruitList) #A fruit is randomly selected from the database.
             if result == False:#If result is False, give them options to select.
-                userOption = input("Please select an option:\n"#Select an option
+                userOption = input("Please select an option:\n"#Request for userOption.
                                    "1. Play Again\n"
                                    "2. Quit\n")
                 while userOption != '1' and userOption != '2':#While userOption is not equal to 1 and 2, print Invalid enttry. Then, make them select again.
                     print ("Invalid entry\n")
-                    userOption = input("Please select an option:\n"#Select an option
+                    userOption = input("Please select an option:\n"#Request for userOption.
                                    "1. Play Again\n"
                                    "2. Quit\n")
                 if userOption == '1':#If userOption equal to 1 then result is True so randomly select another fruit.
                     result = True
         print ("Good-Bye")#Otherwise, print "Good-Bye".
-    
-def jumbleFruit(selectFruit): #This function jumbles a string, displays it for the player to guess the jumbled word and keep a track of guesses used.
+
+"""
+#This function jumbles a string, displays it for the player to guess the jumbled word and keeps track of guesses used. When the player has uses all guesses let them choose an option.
+"""
+def jumbleFruit(selectFruit): #This function jumbles a string, displays it for the player to guess the jumbled word and keeps track of guesses used. When the player has uses all guesses let them choose an option.
     jumbledFruit = str(''.join(selectFruit)) #Change selectFruit variable into string type.
     jumbledFruit = list(jumbledFruit) #Then change selectFruit into a list type. This enables random.shuffle module to shuffle the word.
     random.shuffle(jumbledFruit) #Word gets shuffled here using random.shuffle module.
@@ -51,12 +56,12 @@ def jumbleFruit(selectFruit): #This function jumbles a string, displays it for t
                 print("Bad luck")
                 return False#If they meet the conditions of the else statement, return False to the while loop in def randomFruit and give them options to select.        
         elif userGuess != str(''.join(selectFruit)): #Else/if userGuess is not the same as selectFruit, let the player try again.
-            print(counter)
             userGuess = input("You have {0} more guesses left. Please guess again: ".format(counter)) #Display the number of guesses if the player guess is incorrect.
             
-        
-
-def fruitGuessinggame(): #This function requests for the players name.
+"""
+This function requests for the player's name. If the player's name contains integers make them enter their name again or if the player's name is too short or too long make them enter their name again.
+"""
+def fruitGuessinggame(): #This function requests for the player's name.
     print("Welcome to fruit guessing game.\n") #Welcomes the user to fruit guessing game.
     print("How To Play: Unscramble the letters to make a word.")
     print("NOTE: You have 4 guesses. If you get the first guess wrong a guess is taken off you.\n"
