@@ -8,7 +8,7 @@ import random
 """ 
 #This function is connected to a database in order to randomly select a fruit from a database which contains a list of fruit.
 """
-def randomFruit(): #This function is connected to a database in order to randomly select a fruit from a database which contains a list of fruit.
+def randomFruit():
     with sqlite3.connect("FruitDatabase(GitHub)/fruits.db") as db: #Here is the code that connects my database to randomFruit function.
         cursor = db.cursor()
         cursor.execute("select FruitName from fruits")
@@ -34,7 +34,7 @@ def randomFruit(): #This function is connected to a database in order to randoml
 """
 #This function jumbles a string, displays it for the player to guess the jumbled word and keeps track of guesses used. When the player has uses all guesses let them choose an option.
 """
-def jumbleFruit(selectFruit): #This function jumbles a string, displays it for the player to guess the jumbled word and keeps track of guesses used. When the player has uses all guesses let them choose an option.
+def jumbleFruit(selectFruit):
     jumbledFruit = str(''.join(selectFruit)) #Change selectFruit variable into string type.
     jumbledFruit = list(jumbledFruit) #Then change selectFruit into a list type. This enables random.shuffle module to shuffle the word.
     random.shuffle(jumbledFruit) #Word gets shuffled here using random.shuffle module.
@@ -53,7 +53,7 @@ def jumbleFruit(selectFruit): #This function jumbles a string, displays it for t
                 print("Good job. Here comes the next fruit.")
                 return True #Return True if they guess correctly then go to the while loop in def randomFruit to select a random fruit
             else:#Otherwise if their guess is incorrect, display Bad Luck.
-                print("Bad luck")
+                print("Bad luck\n")
                 return False#If they meet the conditions of the else statement, return False to the while loop in def randomFruit and give them options to select.        
         elif userGuess != str(''.join(selectFruit)): #Else/if userGuess is not the same as selectFruit, let the player try again.
             userGuess = input("You have {0} more guesses left. Please guess again: ".format(counter)) #Display the number of guesses if the player guess is incorrect.
@@ -61,18 +61,21 @@ def jumbleFruit(selectFruit): #This function jumbles a string, displays it for t
 """
 This function requests for the player's name. If the player's name contains integers make them enter their name again or if the player's name is too short or too long make them enter their name again.
 """
-def fruitGuessinggame(): #This function requests for the player's name.
+def fruitGuessinggame():
     print("Welcome to fruit guessing game.\n") #Welcomes the user to fruit guessing game.
     print("How To Play: Unscramble the letters to make a word.")
     print("NOTE: You have 4 guesses. If you get the first guess wrong a guess is taken off you.\n"
         "For every jumbled fruit you will start with 4 guesses.\n"
-        "If you guess right, you move onto the next jumbled fruit.\n") #Instructions of how to play fruit guessing game.
+        "If you guess right, you move onto the next jumbled fruit.\n"
+        "If you have used up all your guesses you will be asked to select an option.\n") #Instructions of how to play fruit guessing game.
     userName = input("Enter player name: ") #Requests for a name.
     while True:
         if any(char.isdigit() for char in userName) == True:
             userName = input("Enter your name again: ") #Ask for their name again because they might have entered integers.
-        elif len(userName) > 15 or len(userName)  < 3: 
-            userName = input("It's too long or too short. Please try again: ") #Asks for the player's name again because it contains over 15 characters or less than 3 characters.
+        elif len(userName) < 3: #If the player enters less than 3 characters make them enter their name again.
+            userName = input("It's too short. Please try again: ")
+        elif len(userName) > 15: #If the player enters more than 15 characters make them enter their name again.
+            userName = input("It's too long. Please try again: ")
         else:
             print("Hello, nice to meet you {0}".format(userName)) #Else, print userName.
             break #Break out of while loop
